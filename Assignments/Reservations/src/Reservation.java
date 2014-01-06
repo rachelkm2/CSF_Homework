@@ -1,44 +1,41 @@
-import java.util.LinkedList;
+public class Reservation{
 
-public class Reservation {
-    private int time;
-    private String name;
-    private int numberOfGuests;
+    private String reserveName;
+    private int reserveTime;
+    private int reserveNumber;
+    private String reserveType;
+    private String reservePhone;
 
-    public Reservation(int time, String name, int numberOfGuests) {
-        this.time = time;
-        this.name = name;
-        this.numberOfGuests = numberOfGuests;
+    public Reservation(){
+        super();
     }
 
-    public int getTime() {
-        return time;
+    public Reservation(String name, int time, int number){
+        this();
+        this.reserveName = name;
+        this.reserveTime = time;
+        this.reserveNumber = number;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public String getReserveName() {
+
+        return reserveName;
     }
 
-    public String getName() {
-        return name;
+    public void setReserveName(String reserveName) {
+
+
+        this.reserveName = reserveName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public int getReserveTime() { return reserveTime; }
 
-    public int getNumberOfGuests() {
-        return numberOfGuests;
-    }
+    public void setReserveTime(int reserveTime) { this.reserveTime = reserveTime; }
 
-    public void setNumberOfGuests(int numberOfGuests) {
-        this.numberOfGuests = numberOfGuests;
-    }
+    public int getReserveNumber() { return reserveNumber; }
 
-    @Override
-    public String toString() {
-        String line = "time: " + this.time + ", name: " + this.name + ". number of guests: " + this.numberOfGuests;
-        return line;
+    public void setReserveNumber(int reserveNumber) {
+        this.reserveNumber = reserveNumber;
     }
 
 }
