@@ -7,7 +7,7 @@ public class IntStack {
 
     public void push(int value) {
         // TODO: Add a value to the top of the stack
-
+        //big-O: O(1)
 
         if (firstNode == null){
             firstNode = new IntListNode(value);
