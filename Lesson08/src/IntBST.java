@@ -56,7 +56,6 @@ public class IntBST {
                 }
             }
         }
-
     }
 
     public boolean search(int value) {

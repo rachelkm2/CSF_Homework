@@ -1,15 +1,22 @@
+<<<<<<< HEAD
 import java.util.LinkedList;
+=======
+>>>>>>> upstream/master
 
 public class IntLinkedList {
     private IntListNode firstNode;
 
+<<<<<<< HEAD
 
     // Comment
+=======
+>>>>>>> upstream/master
     // IntLinkedList stores a list of unique integers
     public IntLinkedList() {
     }
 
     public void insert(int value) {
+<<<<<<< HEAD
         // TODO: Add the integer, or take no action if it's already in the list
 
         //If first node is null then just go ahead and insert value
@@ -27,10 +34,14 @@ public class IntLinkedList {
             }
         }
 
+=======
+        // TOOD: Add the integer, or take no action if it's already in the list
+>>>>>>> upstream/master
     }
 
     public boolean contains(int value) {
         // TODO: Print out if the linked list contains the given integer
+<<<<<<< HEAD
 
         //big-O: O(n)
 
@@ -53,11 +64,14 @@ public class IntLinkedList {
             return true;
         }
 
+=======
+>>>>>>> upstream/master
         return false;
     }
 
     public void remove(int value) {
         // TODO: Remove the given integer from the list, or take no action if it's not in the list
+<<<<<<< HEAD
 
         //big-O: O(n)
 
@@ -89,10 +103,19 @@ public class IntLinkedList {
     public void print() {
         //big-O: O(n)
 
+=======
+    }
+
+    public void print() {
+>>>>>>> upstream/master
         IntListNode node = firstNode;
         while (node != null) {
             System.out.print(node.getValue() + " ");
             node = node.getNextNode();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> upstream/master

@@ -7,6 +7,7 @@ public class IntStack {
 
     public void push(int value) {
         // TODO: Add a value to the top of the stack
+<<<<<<< HEAD
         //big-O: O(1)
 
         if (firstNode == null){
@@ -37,10 +38,18 @@ public class IntStack {
             }
             return  returnNode.getValue();
         }
+=======
+    }
+
+    public int pop() {
+        // TODO: Pop the first value off the statck
+        return 0;
+>>>>>>> upstream/master
     }
 
     public int size() {
         // TODO: Fill out this method
+<<<<<<< HEAD
 
         //big-O: O(n)
 
@@ -55,5 +64,8 @@ public class IntStack {
         }
 
         return counter;
+=======
+        return 0;
+>>>>>>> upstream/master
     }
 }

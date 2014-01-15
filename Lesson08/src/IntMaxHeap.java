@@ -11,7 +11,7 @@ public class IntMaxHeap {
         // Add to the end of the array
         // Note: The Integer class is an Object wrapper around an int that makes it storable in
         //  Java's collection classes
-        // To get an int from an Integer intInstance, call intInstance.intValue()
+        // To get an int from an Integer intInstance, call intInstance.intValue() 
         array.add(value);
 
         if (array.size() > 1)

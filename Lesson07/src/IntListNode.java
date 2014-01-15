@@ -18,4 +18,8 @@ public class IntListNode {
     public void setNextNode(IntListNode nextNode) {
         this.nextNode = nextNode;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> upstream/master
