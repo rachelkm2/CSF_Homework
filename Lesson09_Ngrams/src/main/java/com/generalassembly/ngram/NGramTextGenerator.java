@@ -68,11 +68,11 @@ public class NGramTextGenerator {
         // Start with random seed text
         LinkedList<String> words = this.randomNGram();
         StringWriter stringWriter = new StringWriter(this.OUTPUT_WORD_COUNT);
-        stringWriter.append(ngramStringRepresentation(words));
+//        stringWriter.append(ngramStringRepresentation(words));
         LinkedList<String> newWords = new LinkedList<String>();
         //int i = words.size();
 
-        for (int i = 0; i < OUTPUT_WORD_COUNT; i++) {
+    while(newWords.size() < OUTPUT_WORD_COUNT) {
             // Homework TODO: Given the generated map of ngrams and tailing words, generate random-seeming text!
             // * It should be OUTPUT_WORD_COUNT long
             // * If words is an ngram that exist in the map, get its associated ArrayList<String> and use random.nextInt
@@ -82,6 +82,9 @@ public class NGramTextGenerator {
 
             //RKM: if words is an ngram that exists in the map
             if (ngrams.containsKey(words)){
+                //Add current ngram (Linked List "words") to Linked List "newWords"
+                newWords.add(words.getFirst());
+                newWords.add(words.getLast());
                 //Get its associated ArrayList<String>
                 ArrayList<String> list = ngrams.get(words);
                 //And use random.nextInt to get a random value from its
