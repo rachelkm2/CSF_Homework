@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Generator</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Welcome to Word Generator - Upload your file</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <form id="upload" action="upload" method="POST" enctype="multipart/form-data">
+
+        <fieldset>
+        <legend>File Upload</legend>
+
+          <div>
+            <label for="fileselect">File to upload:</label>
+            <input type="file" id="fileselect" name="fileselect">
+          </div>
+
+          <div id="submitbutton">
+            <button type="submit">Upload Files</button>
+          </div>
+
+        </fieldset>
+
+        </form>
+      </div>
+    </div>
+  <script src="js/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+  </body>
+</html>
