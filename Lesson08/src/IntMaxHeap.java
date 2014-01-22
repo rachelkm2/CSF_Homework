@@ -16,6 +16,17 @@ public class IntMaxHeap {
 
         if (array.size() > 1)
         {
+
+           int newIndex = array.size() -1;
+           int parentIndex = (newIndex -1)/2;
+
+           while (array.get(newIndex) > array.get(parentIndex) ){
+               int tempValue = array.get(newIndex);
+               array.set(newIndex, array.get(parentIndex));
+               array.set(parentIndex, tempValue);
+               newIndex = parentIndex;
+               parentIndex = (newIndex - 1)/2;
+           }
             // TODO: While the new value is greater than its parent value, "bubble up" the
             //  new value in the heap by swapping it with its parent node
             // The object that is added above is at the end of the array (i.e. its index is array.size() - 1)
@@ -23,7 +34,6 @@ public class IntMaxHeap {
             //  E.g. If a child node is at index 10 in the array,
             //  its parent node is at position (10-1)/2, which is 4 (integer division rounds down)
 
-            throw new UnsupportedOperationException("Not implemented!");
         }
     }
 

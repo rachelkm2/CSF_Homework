@@ -13,6 +13,7 @@ public class SimpleHashMap {
 
     private class KeyValueList {
         private final LinkedList<KeyValueTuple> values = new LinkedList<KeyValueTuple>();
+        //int value;
     }
 
     private KeyValueList[] dataStore;
@@ -24,11 +25,33 @@ public class SimpleHashMap {
 
     public Object put(String key, Object value) {
         // TODO:
+
         // * Get the hash value of the key
         // * Insert the key/value tuple in the linked list at the desired index in the data store
         // * If something in that spot already exists, add it at the end of the linked list
         // * Return the value
-        return null;
+
+
+        int hashValue = key.hashCode();
+        int index = Math.abs(hashValue % dataStore.length);
+
+        KeyValueList list;
+
+        //Add
+        if (this.dataStore[index] == null){
+            this.dataStore[index] = new KeyValueList();
+        }
+
+        list = dataStore[index];
+
+        LinkedList<KeyValueTuple> linkedList = list.values;
+        //int newInt = list.value;
+        KeyValueTuple newKeyValueTuple = new KeyValueTuple();
+        newKeyValueTuple.key = key;
+        newKeyValueTuple.value = value;
+        linkedList.add(newKeyValueTuple);
+
+        return value;
     }
 
     public Object get(String key) {
