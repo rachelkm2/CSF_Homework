@@ -34,6 +34,19 @@ public class IntMaxHeap {
             //  E.g. If a child node is at index 10 in the array,
             //  its parent node is at position (10-1)/2, which is 4 (integer division rounds down)
 
+            int index = array.size() - 1;
+            int parentIndex = (index - 1)/2;
+            int parentValue =  array.get(parentIndex).intValue();
+
+            while (value > parentValue) {
+                // Swap parent value and new value
+                array.set(index, new Integer(parentValue));
+                array.set(parentIndex, new Integer(value));
+
+                index = parentIndex;
+                parentIndex = (index - 1)/2;
+                parentValue =  array.get(parentIndex).intValue();
+            }
         }
     }
 
