@@ -1,5 +1,7 @@
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CoinCounter {
@@ -17,6 +19,7 @@ public class CoinCounter {
      * @param denominations Integer value coin denominations. They do not have to be sorted, but all must be > 0.
      *                      This is copied and stored locally.
      */
+
     public CoinCounter(int[] denominations) {
         this.denominations = Arrays.copyOf(denominations, denominations.length);
         Arrays.sort(this.denominations);
@@ -52,7 +55,24 @@ public class CoinCounter {
             Assignment: Implement this algorithm below and make testSimpleNumberOfCoinsRequired pass.
          */
 
-        throw new NotImplementedException();
+        int totalCoins = 0;
+        int newCoins = 0;
+        int index = denominations.length - 1;
+
+
+        while (totalSum > 0 && index >= 0){
+
+            int maxDenomination = denominations[index];
+            if ((totalSum / maxDenomination) > 0){
+                newCoins = totalSum / maxDenomination;
+                totalCoins = totalCoins + newCoins;
+                totalSum = totalSum - (newCoins * maxDenomination);
+            }
+            index = index - 1;
+        }
+
+
+        return totalCoins;
     }
 
     /**
@@ -89,6 +109,58 @@ public class CoinCounter {
             Third assignment: Make testTerribleDenominations pass
          */
 
-        throw new NotImplementedException();
+        int arrayLength = totalSum + 1;
+        int[] array = new int[arrayLength];
+        int totalCoins = 0;
+        int value = 1;
+
+        if (totalSum == 0) {
+            totalCoins = 0;
+        }
+        //Consider a currency with the denominations 1, 5, 7 and 20
+        //* For each possible value, from 1 to totalSum
+//            int i = denominations.length - 1;
+            //if the value is a coin denomination, its required count is 1
+
+
+
+        while (value <= totalSum){
+        int checkValue = 0;
+        int lowestValue = 0;
+        int index = 0;
+
+            //Check the value against each denomination to see if fully divisible
+            while (index <= denominations.length - 1) {
+                if (value >= denominations[index]){
+                    if ((value % denominations[index]) == 0){
+                        totalCoins = value / denominations[index];
+                        array[value] = totalCoins;
+                    }
+                }
+                index ++;
+            }
+
+            while (index <= denominations.length - 1) {
+                if (value >= denominations[index]){
+                    if (lowestValue == 0){
+                        checkValue = value - denominations[index];
+                        lowestValue = array[checkValue] + 1;
+                    } else {
+                        checkValue = value - denominations[index];
+                        int newValue = array[checkValue] + 1;
+                        if (newValue < lowestValue){
+                            lowestValue = newValue;
+                        }
+                    }
+                }
+                totalCoins = lowestValue;
+                array[value] = totalCoins;
+                index ++;
+            }
+
+            value ++;
+        }
+
+        return totalCoins;
     }
 }

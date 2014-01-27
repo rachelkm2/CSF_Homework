@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class CSFLesson10 {
 
@@ -13,12 +12,14 @@ public class CSFLesson10 {
 
         System.out.println("Array: " + Arrays.toString(array));
 
+        float total = 0.0f;
+
+        for (int j = 0; j < 10; j++) {
+            total += array[j];
+        }
+
         for (int i = 0; i < 10; i++) {
             float thisValue = array[i];
-            float total = 0.0f;
-            for (int j = 0; j < 10; j++) {
-                total += array[j];
-            }
             float average = total / 10.0f;
             System.out.println("Value " + thisValue + " is " + (thisValue / average) * 100.0f + "% of the average.");
         }
@@ -36,16 +37,27 @@ public class CSFLesson10 {
 
         System.out.println("Array: " + Arrays.toString(array));
 
+        HashMap hashMap = new HashMap();
+        int count = 0;
+
+        for (int i = 0; i < 10; i++){
+            int thisValue = array[i];
+
+//            if (!hashMap.containsKey(thisValue)){
+//                count = 1;
+//            } else {
+//                count = (Integer) hashMap.get(thisValue)  + 1;
+//            }
+//            hashMap.put(thisValue, count);
+//
+            //condition ? true : false
+            //this line of code does the same thing as the 6 lines above...
+            hashMap.put(thisValue, hashMap.containsKey(thisValue) ? (Integer) hashMap.get(thisValue)  + 1 : 1);
+        }
+
         for (int i = 0; i < 10; i++) {
             int thisValue = array[i];
-            boolean isDuplicate = false;
-            for (int j = 0; j < 10; j++) {
-                if ((i != j) && (thisValue == array[j])) {
-                    isDuplicate = true;
-                }
-            }
-
-            if (isDuplicate) {
+            if ((Integer) hashMap.get(thisValue) > 1){
                 System.out.println("Value " + thisValue + " is a duplicate.");
             } else {
                 System.out.println("Value " + thisValue + " is not a duplicate.");
@@ -79,6 +91,7 @@ public class CSFLesson10 {
     }
 
     static void fifthLab() {
+
         // Bonus Challenge Assignment: Print the first N fibonacci numbers taking advantage of memoization. How fast is this?
         // Note that this does not require recursion.
         int n = 10;
@@ -86,8 +99,8 @@ public class CSFLesson10 {
 
     public static void main(String[] args) {
         //firstLab();
-        //secondLab();
-        thirdLab();
+        secondLab();
+        //thirdLab();
         //fourthLab();
         //fifthLab();
     }
