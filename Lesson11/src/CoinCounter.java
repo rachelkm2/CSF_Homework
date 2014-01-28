@@ -89,7 +89,27 @@ public class CoinCounter {
          - What are your base cases?
          - What is your recursive step?
          */
+         
+        // Sample soln:
+        if (totalSum == 0) {
+            return 0;
+        }
+        else if (Arrays.binarySearch(this.denominations, totalSum) >= 0) {
+            return 1;
+        }
+        else if (totalSum < 0) {
+            return CHANGE_NOT_POSSIBLE_FLAG;
+        }
 
-        throw new NotImplementedException();
+        int lowestChild = CHANGE_NOT_POSSIBLE_FLAG;
+
+        for (int denomination : this.denominations) {
+            int result = recursiveNumberOfCoinsRequired(totalSum - denomination);
+            if (result < lowestChild) {
+                lowestChild = result;
+            }
+        }
+
+        return lowestChild == CHANGE_NOT_POSSIBLE_FLAG ? lowestChild : lowestChild + 1;
     }
 }
