@@ -102,6 +102,20 @@ public class NGramTextGenerator {
             // Bonus opportunities (that will require changes to be made outside of this method):
             // * Instead of starting your text with a random ngram, instead start with the first ngram in the sample text you were given.
             // * Make output word length, ngram length user-settable parameters
+
+            ArrayList<String> trailingWords = this.ngrams.get(words);
+            if (trailingWords == null) {
+                // Error handling, just print a comma and get another seed ngram
+                stringWriter.append(", ");
+                words = this.randomNGram();
+                stringWriter.append(ngramStringRepresentation(words));
+            }
+            else {
+                String randomEnding = trailingWords.get(random.nextInt(trailingWords.size()));
+                words.removeFirst();
+                words.addLast(randomEnding);
+                stringWriter.append(randomEnding + " ");
+            }
         }
         stringWriter.append(ngramStringRepresentation(newWords));
 
