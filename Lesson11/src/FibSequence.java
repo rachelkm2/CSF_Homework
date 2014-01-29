@@ -20,4 +20,5 @@ public class FibSequence {
 
         return fibNumber(n - 1) + fibNumber(n - 2);
     }
+
 }

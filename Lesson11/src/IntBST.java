@@ -32,27 +32,78 @@ public class IntBST {
 
     public String toBFSString() {
         // TODO: Implement a BFS of a tree using a queue
-        return null;
+
+        // Sample solution
+        Queue<IntNode> queue = new LinkedList<>();
+        StringBuilder sb = new StringBuilder();
+
+        queue.add(this.rootNode);
+
+        while(!queue.isEmpty()) {
+            IntNode node = queue.remove();
+
+            sb.append(" " + node.getValue());
+
+            if (node.getLeftChild() != null) queue.add(node.getLeftChild());
+            if (node.getRightChild() != null) queue.add(node.getRightChild());
+        }
+
+        return sb.toString().trim();
     }
 
     public String toPreorderString() {
         // TODO: Return a preorder traversal of a tree using recursion. Values of nodes are space-delimited
         // e.g. "5 1 10"
 
-        return null;
+        // Sample solution
+        return toPreorderString(rootNode);
+    }
+
+    public String toPreorderString(IntNode node) {
+        String string = "" + node.getValue();
+        if (node.getLeftChild() != null) string += " " + toPreorderString(node.getLeftChild());
+        if (node.getRightChild() != null) string += " " + toPreorderString(node.getRightChild());
+        return string;
     }
 
     public String toInorderString() {
         // TODO: Return a Inorder traversal of a tree using recursion. Values of nodes are space-delimited
         // e.g. "1 5 10"
 
-        return null;
+        // Sample solution
+        return toInorderString(rootNode);
+    }
+
+    public String toInorderString(IntNode node) {
+        String string = "";
+        if (node.getLeftChild() != null) string += toInorderString(node.getLeftChild());
+        string += node.getValue() + " ";
+        if (node.getRightChild() != null) string += toInorderString(node.getRightChild());
+        return string;
     }
 
     public List<Integer> valuesGreaterThan(int n) {
         // TODO: Return values that are greater than or equal to n.
         // Do this with the lowest computational complexity you can manage.
-        return null;
+
+        // Sample solution
+        return valuesGreaterThan(rootNode, n, new LinkedList<Integer>());
+    }
+
+    public List<Integer> valuesGreaterThan(IntNode node, int value, List<Integer> values) {
+        List<Integer> list = new LinkedList<>();
+
+
+        if (node == null)
+            return values;
+
+        if (node.getValue() > value)
+            values.add(node.getValue());
+
+        valuesGreaterThan(node.getLeftChild(), value, values);
+        valuesGreaterThan(node.getRightChild(),value, values);
+
+        return values;
     }
 
     public void insertValue(int value) {
