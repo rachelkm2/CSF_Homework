@@ -43,7 +43,7 @@ public class IntBST {
     }
 
     public String toInorderString() {
-        // TODO: Return a preorder traversal of a tree using recursion. Values of nodes are space-delimited
+        // TODO: Return a Inorder traversal of a tree using recursion. Values of nodes are space-delimited
         // e.g. "1 5 10"
 
         return null;
@@ -52,6 +52,7 @@ public class IntBST {
     public List<Integer> valuesGreaterThan(int n) {
         // TODO: Return values that are greater than or equal to n.
         // Do this with the lowest computational complexity you can manage.
+        return null;
     }
 
     public void insertValue(int value) {

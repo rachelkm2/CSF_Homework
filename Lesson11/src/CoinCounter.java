@@ -79,6 +79,35 @@ public class CoinCounter {
     }
 
     int recursiveNumberOfCoinsRequired(int totalSum) {
+
+        //Base cases :equal to 0 :equal to denominations :less than least possible denomination
+
+        if (totalSum == 0){
+            return 0;
+        }
+
+        if (totalSum < denominations[0]){
+            return CHANGE_NOT_POSSIBLE_FLAG;
+        }
+
+        for(int i = 0; i <= (denominations.length - 1); i++){
+            if (totalSum == denominations[i]){
+                return 1;
+            }
+        }
+
+        int lowestValue = 0;
+        //recursive step :value - each currency :take the minimum of all
+        for(int i = 0; i <= (denominations.length - 1); i++){
+            int checkValue = recursiveNumberOfCoinsRequired(totalSum - denominations[i]);
+            if (lowestValue == 0){
+                lowestValue = checkValue;
+            } else if (checkValue < lowestValue){
+                lowestValue = checkValue;
+            }
+        }
+
+
         /*
         TODO: Create a recursive numberOfCoinsRequired method, making the unit tests pass.
          - The algorithm is:
@@ -89,7 +118,10 @@ public class CoinCounter {
          - What are your base cases?
          - What is your recursive step?
          */
+        if (lowestValue == CHANGE_NOT_POSSIBLE_FLAG){
+            return CHANGE_NOT_POSSIBLE_FLAG;
+        }
 
-        throw new NotImplementedException();
+        return lowestValue + 1;
     }
 }
