@@ -1,3 +1,4 @@
+import com.sun.swing.internal.plaf.metal.resources.metal_de;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Arrays;
@@ -15,6 +16,35 @@ public class Search {
          as you search, or perform the search without ever copying the array.
          Start with the former, then try for the latter.
          */
-        throw new NotImplementedException();
+
+        if (array.length == 0){
+            return false;
+        }
+
+
+        if (array.length == 1 && searchTerm == array[0]){
+            return true;
+        } else if (array.length == 1 && searchTerm != array[0]) {
+            return false;
+        }
+
+        int middle = (array.length / 2);
+
+        if (searchTerm == array[middle]) {
+            return true;
+        }
+
+        if (searchTerm < array[middle]){
+            int[] newArray = Arrays.copyOfRange(array, 0, middle);
+           return binarySearch(newArray, searchTerm);
+        } else if (searchTerm > array[middle]) {
+            int[] newArray = Arrays.copyOfRange(array, middle, array.length);
+            return binarySearch(newArray, searchTerm);
+        }
+
+        return false;
     }
+
+//    public static
 }
+

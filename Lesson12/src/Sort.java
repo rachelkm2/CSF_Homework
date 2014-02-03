@@ -10,7 +10,19 @@ public class Sort {
      */
     public static void insertionSort(int[] array) {
         // TODO: Perform an insertion sort on the array
-        throw new NotImplementedException();
+
+        if (array.length > 1){
+            for (int i = 1; i < array.length; i++){
+                for (int j = i - 1; j >= 0; j-- ){
+                    if (array[j+1] < array [j]){
+                        swap(array, j, j+1);
+                    }
+                }
+
+            }
+        }
+
+
     }
 
     private static void swap(int[] array, int index1, int index2) {

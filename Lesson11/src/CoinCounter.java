@@ -90,6 +90,11 @@ public class CoinCounter {
             return CHANGE_NOT_POSSIBLE_FLAG;
         }
 
+
+        //could have also done:
+
+        //if (Arrays.binarySearch(this.denominations, totalSum >= 0){return 1;}
+        //(returns the index of the array)
         for(int i = 0; i <= (denominations.length - 1); i++){
             if (totalSum == denominations[i]){
                 return 1;
