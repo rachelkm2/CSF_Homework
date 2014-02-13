@@ -10,8 +10,8 @@ public class SEFLesson14 {
     public static void main(String[] args) {
         StopWatch stopWatch = new LoggingStopWatch("millions");
 
-        asyncMillions();
-        //syncMillions();
+        //asyncMillions();
+        syncMillions();
 
         System.out.flush();
         stopWatch.stop();

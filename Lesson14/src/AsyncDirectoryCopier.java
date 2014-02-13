@@ -19,6 +19,54 @@ public class AsyncDirectoryCopier {
      * @throws IOException An IOException raised while copying the files.
      */
     public void copyDirectory(File sourceDir, File destinationDir) throws IOException {
-        // TODO: Fill in
+        if (!sourceDir.isDirectory() || !destinationDir.isDirectory()) {
+            throw new IllegalArgumentException("Must pass directories into copyDirectory function");
+        }
+
+        FileFilter fileFilter = new FileFilter() {
+            public boolean accept(File file) {
+                return file.isFile();
+            }
+        };
+
+        File[] filesToCopy = sourceDir.listFiles(fileFilter);
+        for (File sourceFile : filesToCopy) {
+            File destinationFile = new File(destinationDir, sourceFile.getName());
+            copyFile(sourceFile, destinationFile);
+        }
     }
+
+    /**
+     * Copies a file from one place to another.
+     * @param source Source file. Must be an actual file.
+     * @param destination Destination file.
+     * @throws IOException An exception raised while copying the file.
+     */
+    private void copyFile(File source, File destination) throws IOException {
+        if (!source.isFile())
+            throw new IllegalArgumentException("Input file must be an actual file!");
+
+        if (!destination.exists())
+            destination.createNewFile();
+        InputStream in = null;
+        OutputStream out = null;
+
+        try {
+            in = new FileInputStream(source);
+            out = new FileOutputStream(destination);
+
+            byte[] buf = new byte[BUFFER_SIZE];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+        }
+        finally {
+            if (in != null)
+                in.close();
+            if (out != null)
+                out.close();
+        }
+    }
+
 }
