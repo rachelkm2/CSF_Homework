@@ -1,12 +1,6 @@
 import java.io.*;
 
-/*
- * Your assignment: The DirectoryCopier class will copy all the files in one
- * directory to another directories in series (not in parallel). Use that code
- * as a starting point and modify this class to copy files in parallel using threads.
- */
 public class AsyncDirectoryCopier {
-    // Sample soln
     private static final int BUFFER_SIZE = 1024;
 
     /**
@@ -65,8 +59,7 @@ public class AsyncDirectoryCopier {
 
     /**
      * Copies one directory to another directory
-     * Only works with existing directories, and only copies the first level of files
-     * (Does not recursively copy directory structure)
+     * TODO: This does not currently recursively copy files. Change it to do so.
      *
      * @param sourceDir      The source directory file. Must be an existing directory.
      * @param destinationDir The destination directory file. Must be an existing directory.
@@ -90,7 +83,8 @@ public class AsyncDirectoryCopier {
             File sourceFile = filesToCopy[i];
             File destinationFile = new File(destinationDir, sourceFile.getName());
 
-            threads[i] = new Thread(new FileCopyRunner(sourceFile, destinationFile));
+            FileCopyRunner runner = new FileCopyRunner(sourceFile, destinationFile);
+            threads[i] = new Thread(runner);
             threads[i].start();
         }
 
