@@ -18,9 +18,16 @@ public class DirectoryCopier {
      * @throws IOException An IOException raised while copying the files.
      */
     public void copyDirectory(File sourceDir, File destinationDir) throws IOException {
+
         if (!sourceDir.isDirectory() || !destinationDir.isDirectory()) {
             throw new IllegalArgumentException("Must pass directories into copyDirectory function");
         }
+
+        FileFilter directoryFilter = new FileFilter() {
+            public boolean accept(File file) {
+                return file.isDirectory();
+            }
+        };
 
         FileFilter fileFilter = new FileFilter() {
             public boolean accept(File file) {
@@ -29,9 +36,21 @@ public class DirectoryCopier {
         };
 
         File[] filesToCopy = sourceDir.listFiles(fileFilter);
+        File[] directoriesToCopy = sourceDir.listFiles(directoryFilter);
+
         for (File sourceFile : filesToCopy) {
             File destinationFile = new File(destinationDir, sourceFile.getName());
             copyFile(sourceFile, destinationFile);
+        }
+
+        for (File sourceDirectory : directoriesToCopy) {
+            for (File sourceFile : filesToCopy) {
+                File destinationFile = new File(destinationDir, sourceFile.getName());
+                copyFile(sourceFile, destinationFile);
+            }
+            File destinationFile = new File(destinationDir, sourceDirectory.getName());
+             destinationFile.mkdir();
+            copyDirectory(sourceDirectory, destinationDir);
         }
     }
 

@@ -34,11 +34,15 @@ public class SEFLesson15 {
     public static void unbufferedUnstreamed(Path path, byte[] data) {
         // TODO: Unbuffered and unstreamed, write data to a file then read it back completely.
         // Use the methods available on the Files class
+
+
     }
 
     public static void bufferedStreamed(Path path, String text) {
         // TODO: Buffered and streamed, write data to a file then print it out to the console.
         // Use BufferedWriter and BufferedReader, respectively.
+
+
     }
 
     public static void unbufferedStreamed(Path path, byte[] data) {
